@@ -6,14 +6,14 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:27:23 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/06/23 16:30:06 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/06/23 17:02:19 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../../libftc/libft.h"
+# include "./libft/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
 
