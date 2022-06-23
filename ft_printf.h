@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 14:27:23 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/06/23 17:02:19 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/06/23 18:12:50 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "./libft/libft.h"
 # include <stdarg.h>
-# include <stdio.h>
 
 int				ft_printf(const char *s, ...);
 int				ft_putstr(char *s);
