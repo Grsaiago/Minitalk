@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/02 13:55:19 by gsaiago           #+#    #+#             */
+/*   Updated: 2022/08/03 17:51:34 by gsaiago          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minitalk.h"
+
+size_t	ft_batoi(char *ptr);
+size_t	ft_pow(size_t base, size_t exp);
+void	*ft_calloc(size_t count, size_t size);
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+	size_t	n;
+	size_t	i;
+		
+	if (count == 0 || size == 0)
+		return (NULL);
+	i = -1;
+	n = count * size;
+	ptr = malloc(n);
+	if (ptr == NULL)
+		return (NULL);
+	while (++i < n)
+		((char *)ptr)[i] = 0;
+	return (ptr);
+}
+
+size_t ft_batoi(char *ptr)
+{
+	unsigned int	i;
+	unsigned int	numb;
+
+	numb = 0;
+	i = 0;
+	while (ptr[i])
+	{
+		if (ptr[i] == '1')
+			numb += ft_pow(2, 8 - i);
+		else
+			i++;
+	}
+	return (numb);
+}
+
+size_t	ft_pow(size_t base, size_t exp)
+{
+	if (!exp)
+		return (1);
+	else if (!base)
+		return (0);
+	if (!exp)
+			return (1);
+	else
+		return (base * ft_pow(base, exp - 1));
+}
