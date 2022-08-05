@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:20:34 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/03 17:53:01 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/05 17:51:55 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ size_t	ft_pow(size_t base, size_t exp);
 
 void	*ft_calloc(size_t count, size_t size);
 
-void	handle_sigusr(int signal);
+void	handle_sigusr(int signal, siginfo_t *info, void *context);
+
+void sendchar(int pid, unsigned int usecs, char str);
 
 #endif

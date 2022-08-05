@@ -6,44 +6,45 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:31 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/03 17:55:43 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/05 19:10:48 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 char	*binumb;
+int		clientpid;
+int		j;
 
-void	handle_sigusr(int signal);
+void	handle_sigusr(int signal, siginfo_t *info, void *context);
 
 int main (void)
 {
 	unsigned int	pid;
 	char			c;
 	struct			sigaction sa;
-	int				count;
-	count = 0;
+
+	j = 0;
+	c = 'a';
 	binumb = ft_calloc(1, 9);
-	sa.sa_handler = &handle_sigusr;
-	sa.sa_flags = SA_RESTART;
+	sa.sa_sigaction = &handle_sigusr;
+	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	printf("O PID é > %d\n", getpid());
-	while (count < 7)
+	while (1)
 	{
 		pause();
-		count++;
-	}
-	c = ft_batoi(binumb);
-	putchar(c);
+	}	
 }
 
-
-void	handle_sigusr(int signal)
+void	handle_sigusr(int signal, siginfo_t *info, void *context)
 {
-	static int i;
-
+	static int	i;
+	char		c;
+	
+	clientpid = info->si_pid;
 	if (signal == SIGUSR1)
 	{
 		binumb[i] = '0';
@@ -57,5 +58,11 @@ void	handle_sigusr(int signal)
 //		printf("O vetor recebeu 1\n");
 //		printf("O vetor agora é > |%s|\n", binumb);
 		i++;
+	}
+	if (i == 8)
+	{
+//		c = ((char)ft_batoi(binumb));
+		write(1, "a", 1);
+		i = 0;
 	}
 }

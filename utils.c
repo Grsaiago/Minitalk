@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:19 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/03 17:51:34 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/05 18:35:17 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,19 @@ size_t	ft_pow(size_t base, size_t exp)
 			return (1);
 	else
 		return (base * ft_pow(base, exp - 1));
+}
+
+void sendchar(int pid, unsigned int usecs, char c)
+{
+	int i;
+
+	i = 8;
+	while (i--)
+	{
+		if (!(c & (1 << i)))
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(100);
+	}
 }
