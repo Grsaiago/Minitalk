@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/08 17:53:08 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/08 18:19:49 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 unsigned int	wc;
 
-
-void	handle_sigusr_c (int signal);
+void	handle_sigusr_c(int signal);
 
 int	main(int argc, char *argv[])
 {
-	int	i;
-	unsigned int	pid;
-	char			*ptr;
-	unsigned int	usecs;
-	struct 			sigaction sa;
+	int		i;
+	int		pid;
+	char	*ptr;
+	struct 	sigaction sa;
 	
-	wc = 0;
-	if (argc > 3)
+	if (argc != 2)
 	{
-			ft_printf("Excesso de argumentos");
+			write(1, "Excesso de argumentos\n", 22);
 			return (-1);
 	}
 	sa.sa_handler = &handle_sigusr_c;
@@ -37,23 +34,33 @@ int	main(int argc, char *argv[])
 	sigaddset(&sa.sa_mask, SIGUSR1);
 	sigaddset(&sa.sa_mask, SIGUSR2);
 	sigaction(SIGUSR1, &sa, NULL);
-	usecs = 500;
-	i = 0;
-	pid = atoi(argv[1]);
+	wc = 0;
+	i = -1;
+	pid = ft_atoi(argv[1]);
 	ptr = argv[2];
-	ft_printf("o pid recebido foi > %d\n", pid);
-	while(ptr[i])
-	{
-		sendchar(pid, usecs, ptr[i]);
-		i++;
-	}
-	sendchar(pid, usecs, '\0');
-	ft_printf("PID do client é > %d", getpid());
+	while(ptr[++i])
+		sendchar(pid, 500, ptr[i]);
+	sendchar(pid, 500, '\0');
 }
 
-void	handle_sigusr_c (int signal)
+void	handle_sigusr_c(int signal)
 {
 	write(1, "O total enviado foi: ", 21);
 	writenbr(wc);
 	write (1, "\n", 1);
+}
+
+void sendchar(int pid, unsigned int usecs, char c)
+{
+	int i;
+
+	i = 8;
+	while (i--)
+	{
+		if (!(c & (1 << i)))
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(usecs);
+	}
 }

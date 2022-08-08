@@ -1,18 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_minitalk.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/02 13:55:19 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/08 15:50:21 by gsaiago          ###   ########.fr       */
+/*   Created: 2022/05/30 18:55:33 by gsaiago           #+#    #+#             */
+/*   Updated: 2022/08/08 18:18:56 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	*ft_calloc(size_t count, size_t size);
+int	ft_atoi(const char *str)
+{
+	int	sign;
+
+	sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '+' && str[1] >= '0' && str[1] <= '9')
+		str++;
+	else if (*str == '-' && str[1] >= '0' && str[1] <= '9')
+	{
+		str++;
+		sign = -1;
+	}
+	if (*str >= '0' && *str <= '9')
+		return (ft_tatoi(str, sign));
+	return (0);
+}
+
+int	ft_tatoi(const char *str, int sign)
+{
+	int	len;
+	int	i;
+	int	max;
+	int	numb;
+
+	i = -1;
+	len = 0;
+	max = 0;
+	numb = 0;
+	while (str[len] >= '0' && str[len] <= '9')
+		len++;
+	max = len;
+	while (++i < max)
+		numb = numb + (str[i] - 48) * ft_pow10(--len);
+	return (numb * sign);
+}
+
+int	ft_pow10(int n)
+{
+	int	base;
+	int	i;
+
+	i = -1;
+	base = 1;
+	while (++i < n)
+		base = base * 10;
+	return (base);
+}
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -30,21 +78,6 @@ void	*ft_calloc(size_t count, size_t size)
 	while (++i < n)
 		((char *)ptr)[i] = 0;
 	return (ptr);
-}
-
-void sendchar(int pid, unsigned int usecs, char c)
-{
-	int i;
-
-	i = 8;
-	while (i--)
-	{
-		if (!(c & (1 << i)))
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
-		usleep(usecs);
-	}
 }
 
 void	writenbr(int nbr)
