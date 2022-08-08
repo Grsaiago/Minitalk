@@ -6,14 +6,13 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:31 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/07 18:11:30 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/08 11:11:42 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 char	*binumb;
-int		clientpid;
 int		j;
 
 void	handle_sigusr(int signal, siginfo_t *info, void *context);
@@ -41,9 +40,10 @@ int main (void)
 
 void	handle_sigusr(int signal, siginfo_t *info, void *context)
 {
-	static int	i;
-	char		c;
-	
+	static int		i;
+	char			c;
+	unsigned int	clientpid;
+
 	clientpid = info->si_pid;
 	if (signal == SIGUSR1)
 	{
@@ -61,7 +61,9 @@ void	handle_sigusr(int signal, siginfo_t *info, void *context)
 	}
 	if (i == 8)
 	{
-		c = ((char)ft_batoi(binumb));
+		c = ft_batoi(binumb);
+			if (c == '\0')
+				kill(clientpid, SIGUSR1);
 		write(1, &c, 1);
 		i = 0;
 	}
