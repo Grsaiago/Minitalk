@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:31 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/05 19:10:48 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/07 18:11:30 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	handle_sigusr(int signal, siginfo_t *info, void *context)
 	}
 	if (i == 8)
 	{
-//		c = ((char)ft_batoi(binumb));
-		write(1, "a", 1);
+		c = ((char)ft_batoi(binumb));
+		write(1, &c, 1);
 		i = 0;
 	}
 }

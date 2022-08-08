@@ -6,15 +6,15 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:19 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/05 18:35:17 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/07 18:09:30 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-size_t	ft_batoi(char *ptr);
-size_t	ft_pow(size_t base, size_t exp);
-void	*ft_calloc(size_t count, size_t size);
+unsigned int	ft_batoi(char *ptr);
+size_t			ft_pow(size_t base, size_t exp);
+void			*ft_calloc(size_t count, size_t size);
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -34,7 +34,7 @@ void	*ft_calloc(size_t count, size_t size)
 	return (ptr);
 }
 
-size_t ft_batoi(char *ptr)
+unsigned int ft_batoi(char *ptr)
 {
 	unsigned int	i;
 	unsigned int	numb;
@@ -44,7 +44,10 @@ size_t ft_batoi(char *ptr)
 	while (ptr[i])
 	{
 		if (ptr[i] == '1')
-			numb += ft_pow(2, 8 - i);
+		{
+			numb += ft_pow(2, 7 - i);
+			i++;
+		}
 		else
 			i++;
 	}

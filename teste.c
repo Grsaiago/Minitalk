@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   teste.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:20:34 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/07 18:05:38 by gsaiago          ###   ########.fr       */
+/*   Created: 2022/08/07 17:55:36 by gsaiago           #+#    #+#             */
+/*   Updated: 2022/08/07 18:06:30 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <stdio.h>
+int	main(void)
+{
+	char	*binumb = "01001101";
+	char	c;
 
-unsigned int	ft_batoi(char *ptr);
-
-size_t			ft_pow(size_t base, size_t exp);
-
-void			*ft_calloc(size_t count, size_t size);
-
-void			handle_sigusr(int signal, siginfo_t *info, void *context);
-
-void 			sendchar(int pid, unsigned int usecs, char str);
-
-#endif
+	c = ft_batoi(binumb);
+	printf("%c", c);
+}
