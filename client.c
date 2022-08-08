@@ -6,7 +6,11 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/08 16:04:43 by gsaiago          ###   ########.fr       */
+=======
+/*   Updated: 2022/08/08 16:59:39 by gsaiago          ###   ########.fr       */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +24,6 @@ void	handle_sigusr_c (int signal);
 int	main(int argc, char *argv[])
 {
 	int	i;
-	int	j;
 	unsigned int	pid;
 	char			*ptr;
 	unsigned int	usecs;
@@ -29,7 +32,7 @@ int	main(int argc, char *argv[])
 	wc = 0;
 	if (argc > 3)
 	{
-			printf("Excesso de argumentos");
+			ft_printf("Excesso de argumentos");
 			return (-1);
 	}
 	sa.sa_handler = &handle_sigusr_c;
@@ -42,14 +45,14 @@ int	main(int argc, char *argv[])
 	i = 0;
 	pid = atoi(argv[1]);
 	ptr = argv[2];
-	printf("o pid recebido foi > %d\n", pid);
+	ft_printf("o pid recebido foi > %d\n", pid);
 	while(ptr[i])
 	{
 		sendchar(pid, usecs, ptr[i]);
 		i++;
 	}
 	sendchar(pid, usecs, '\0');
-	printf("PID do client é > %d", getpid());
+	ft_printf("PID do client é > %d", getpid());
 }
 
 void	handle_sigusr_c (int signal)
