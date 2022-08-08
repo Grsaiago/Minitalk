@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/08 11:14:40 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/08 16:04:43 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ int	main(int argc, char *argv[])
 			return (-1);
 	}
 	sa.sa_handler = &handle_sigusr_c;
-	sa.sa_flags = SA_RESTART;
+	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
 	sigaction(SIGUSR1, &sa, NULL);
-	usecs = 250;
+	usecs = 500;
 	i = 0;
 	pid = atoi(argv[1]);
 	ptr = argv[2];
@@ -53,5 +55,6 @@ int	main(int argc, char *argv[])
 void	handle_sigusr_c (int signal)
 {
 	write(1, "O total enviado foi: ", 21);
-	write(1, &wc, 10);
+	writenbr(wc);
+	write (1, "\n", 1);
 }
