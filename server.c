@@ -6,15 +6,15 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:31 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/08 18:18:57 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/09 11:03:42 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int main (void)
+int	main(void)
 {
-	struct	sigaction sa;
+	struct sigaction	sa;
 
 	sa.sa_sigaction = &handle_sigusr;
 	sa.sa_flags = SA_SIGINFO;
@@ -22,8 +22,8 @@ int main (void)
 	sigaddset(&sa.sa_mask, SIGUSR1);
 	sigaddset(&sa.sa_mask, SIGUSR2);
 	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL); 
-	write (1,"O PID do server é > ", 21);
+	sigaction(SIGUSR2, &sa, NULL);
+	write(1, "O PID do server é > ", 21);
 	writenbr(getpid());
 	write (1, "\n", 1);
 	while (1)
@@ -54,4 +54,3 @@ void	handle_sigusr(int signal, siginfo_t *info, void *context)
 		i = 0;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:55:33 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/08 18:18:56 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/09 11:02:02 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,6 @@ int	ft_pow10(int n)
 	while (++i < n)
 		base = base * 10;
 	return (base);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*ptr;
-	size_t	n;
-	size_t	i;
-		
-	if (count == 0 || size == 0)
-		return (NULL);
-	i = -1;
-	n = count * size;
-	ptr = malloc(n);
-	if (ptr == NULL)
-		return (NULL);
-	while (++i < n)
-		((char *)ptr)[i] = 0;
-	return (ptr);
 }
 
 void	writenbr(int nbr)
