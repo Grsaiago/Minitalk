@@ -6,11 +6,12 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:31 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/09 11:03:42 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/09 18:48:41 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdio.h>
 
 int	main(void)
 {
@@ -48,9 +49,14 @@ void	handle_sigusr(int signal, siginfo_t *info, void *context)
 	}
 	if (i == 8)
 	{
-		if (c == '\0')
+		if (c == 0)
+		{
 			kill(info->si_pid, SIGUSR1);
+			sleep(1);
+			kill(info->si_pid, SIGUSR2);
+		}
 		write(1, &c, 1);
 		i = 0;
+		c = 0;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:08:06 by gsaiago           #+#    #+#              #
-#    Updated: 2022/08/09 17:38:25 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/08/09 17:45:30 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,6 @@ $(CLIENT):	$(OBJCLIENT) $(OBJUTILS) minitalk.h
 
 $(SERVER):	$(OBJSERVER) minitalk.h
 	$(CC) $(FLAGS) $(OBJSERVER) $(OBJUTILS) -o $(SERVER)
-
-# $(OBJS): $(SRCS)
-#	$(CC) -I . -c $(FLAGS) $(SRCS)
 
 clean:
 	rm -f $(OBJSERVER) $(OBJCLIENT) $(OBJUTILS)

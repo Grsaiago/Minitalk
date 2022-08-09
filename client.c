@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/09 17:43:13 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/09 18:54:31 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ int	main(int argc, char *argv[])
 		write(1, "O input correto é \"<PID> <string>\"\n", 37);
 		return (-1);
 	}
-	sa.sa_handler = &handle_sigusr_c;
-	sa.sa_flags = 0;
-	sigemptyset(&sa.sa_mask);
-	sigaddset(&sa.sa_mask, SIGUSR1);
-	sigaddset(&sa.sa_mask, SIGUSR2);
-	sigaction(SIGUSR1, &sa, NULL);
+	signal(SIGUSR1, &handle_sigusr_c);
+//	sigaction(SIGUSR1, &sa, NULL);
+//	sa.sa_handler = &handle_sigusr_c;
+//	sa.sa_flags = 0;
+//	sigemptyset(&sa.sa_mask);
+//	sigaddset(&sa.sa_mask, SIGUSR1);
+//	sigaddset(&sa.sa_mask, SIGUSR2);
 	g_wc = 0;
 	i = -1;
 	pid = ft_atoi(argv[1]);
@@ -41,6 +42,7 @@ int	main(int argc, char *argv[])
 	while (ptr[++i])
 		sendchar(pid, 250, ptr[i]);
 	sendchar(pid, 250, '\0');
+	pause();
 }
 
 void	handle_sigusr_c(int signal)
@@ -63,4 +65,5 @@ void	sendchar(int pid, unsigned int usecs, char c)
 			kill(pid, SIGUSR2);
 		usleep(usecs);
 	}
+	g_wc++;
 }
