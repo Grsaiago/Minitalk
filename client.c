@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/09 18:54:31 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/09 18:58:48 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	signal(SIGUSR1, &handle_sigusr_c);
-//	sigaction(SIGUSR1, &sa, NULL);
-//	sa.sa_handler = &handle_sigusr_c;
-//	sa.sa_flags = 0;
-//	sigemptyset(&sa.sa_mask);
-//	sigaddset(&sa.sa_mask, SIGUSR1);
-//	sigaddset(&sa.sa_mask, SIGUSR2);
 	g_wc = 0;
 	i = -1;
 	pid = ft_atoi(argv[1]);
