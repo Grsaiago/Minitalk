@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/09 11:07:02 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/09 15:13:17 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char *argv[])
 	char				*ptr;
 	struct sigaction	sa;
 
-	if (argc != 2)
+	if (argc != 3)
 	{
 		write(1, "Excesso de argumentos\n", 22);
 		return (-1);
@@ -39,8 +39,8 @@ int	main(int argc, char *argv[])
 	pid = ft_atoi(argv[1]);
 	ptr = argv[2];
 	while (ptr[++i])
-		sendchar(pid, 500, ptr[i]);
-	sendchar(pid, 500, '\0');
+		sendchar(pid, 100, ptr[i]);
+	sendchar(pid, 100, '\0');
 }
 
 void	handle_sigusr_c(int signal)
