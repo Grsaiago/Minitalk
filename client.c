@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/09 15:13:17 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/09 17:42:06 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		write(1, "Excesso de argumentos\n", 22);
+		write(1, "O input correto é \"<PID> <string>\"\n", 37);
 		return (-1);
 	}
 	sa.sa_handler = &handle_sigusr_c;

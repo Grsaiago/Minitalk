@@ -6,41 +6,51 @@
 #    By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/09 11:08:06 by gsaiago           #+#    #+#              #
-#    Updated: 2022/08/09 14:17:58 by gsaiago          ###   ########.fr        #
+#    Updated: 2022/08/09 17:38:25 by gsaiago          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAMECLIENT = client
+NAME	= minitalk
 
-NAMESERVER = server
+CLIENT	= client
 
-UTILS = utils_minitalk.c
+SERVER	= server
 
-NAME = minitalk.a
+SRCSERVER	= server.c
 
-SRCS = client.c\
-	   server.c\
-	   utils_minitalk.c\
+SRCCLIENT	= client.c
 
-OBJS = $(SRCS:.c=.o)
+SRCUTILS	= utils_minitalk.c
+
+OBJSERVER	= $(SRCSERVER:.c=.o)
+
+OBJCLIENT	= $(SRCCLIENT:.c=.o)
+
+OBJUTILS	= $(SRCUTILS:.c=.o)
+
 
 RM = rm -f
-FLAGS = -Wall -Werror -Werror -c
+FLAGS = -Wall -Werror -Wextra
 CC = cc
 
 all: $(NAME) 
 
-$(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
+$(NAME): $(CLIENT) $(SERVER)
 
-$(OBJS): $(SRCS)
-	$(CC) -I . -c $(FLAGS) $(SRCS)
+$(CLIENT):	$(OBJCLIENT) $(OBJUTILS) minitalk.h
+	$(CC) $(FLAGS) $(OBJCLIENT) $(OBJUTILS) -o $(CLIENT)
+
+$(SERVER):	$(OBJSERVER) minitalk.h
+	$(CC) $(FLAGS) $(OBJSERVER) $(OBJUTILS) -o $(SERVER)
+
+# $(OBJS): $(SRCS)
+#	$(CC) -I . -c $(FLAGS) $(SRCS)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJSERVER) $(OBJCLIENT) $(OBJUTILS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(CLIENT) $(SERVER)
 
 re: fclean all
 
