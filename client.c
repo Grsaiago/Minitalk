@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/09 17:42:06 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/09 17:43:13 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	main(int argc, char *argv[])
 	pid = ft_atoi(argv[1]);
 	ptr = argv[2];
 	while (ptr[++i])
-		sendchar(pid, 100, ptr[i]);
-	sendchar(pid, 100, '\0');
+		sendchar(pid, 250, ptr[i]);
+	sendchar(pid, 250, '\0');
 }
 
 void	handle_sigusr_c(int signal)
