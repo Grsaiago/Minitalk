@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:31 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/09 18:58:28 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/10 11:17:52 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,9 @@ void	handle_sigusr(int signal, siginfo_t *info, void *context)
 	static int			i;
 	static unsigned int	c;
 
-	if (signal == SIGUSR1)
-		c = c << 1;
-	else
-	{
-		c = c << 1;
+	c = c << 1;
+	if (signal == SIGUSR2)
 		c = c | 1;
-	}
 	i++;
 	if (i == 8)
 	{
