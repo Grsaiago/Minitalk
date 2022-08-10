@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:20:34 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/10 12:24:40 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/10 17:31:47 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <signal.h>
+# include <stdlib.h>
 
 void	writenbr(int nbr);
 
