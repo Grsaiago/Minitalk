@@ -6,12 +6,11 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:31 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/10 11:17:52 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/10 12:08:31 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
 
 int	main(void)
 {
