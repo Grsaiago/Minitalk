@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:55:31 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/10 12:23:56 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/10 17:25:42 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	handle_sigusr(int signal, siginfo_t *info, void *context)
 		if (c == 0)
 		{
 			kill(info->si_pid, SIGUSR1);
-			sleep(1);
-			kill(info->si_pid, SIGUSR2);
 		}
 		write(1, &c, 1);
 		i = 0;

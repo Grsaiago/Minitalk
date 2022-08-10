@@ -6,7 +6,7 @@
 /*   By: gsaiago <gsaiago@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 13:54:58 by gsaiago           #+#    #+#             */
-/*   Updated: 2022/08/10 12:24:07 by gsaiago          ###   ########.fr       */
+/*   Updated: 2022/08/10 17:24:36 by gsaiago          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	handle_sigusr_c(int signal)
 	write(1, "O total enviado foi: ", 21);
 	writenbr(g_wc);
 	write (1, "\n", 1);
+	exit(EXIT_SUCCESS);
 }
 
 void	sendchar(int pid, unsigned int usecs, char c)
