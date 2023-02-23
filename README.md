@@ -23,9 +23,9 @@ $> git clone https://github.com/Grsaiago/Minitalk.git && cd Minitalk && make
 ## Usage
 
 ```sh
-./server
+$> ./server
 ```
 On another terminal:
 ```sh
-./client <pid_printed_by_server> "<your_message>"
+$> ./client <pid_printed_by_server> "<your_message>"
 ```
